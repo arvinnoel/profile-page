@@ -4,7 +4,7 @@ from profiles import profiles
 
 app = FastAPI()
 origins = [
-    "https://your-frontend.onrender.com",
+    "https://profile-page-nextjs.onrender.com",
 ]
 
 app.add_middleware(
