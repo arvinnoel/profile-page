@@ -3,27 +3,26 @@ from fastapi.middleware.cors import CORSMiddleware
 from profiles import profiles
 
 app = FastAPI()
+origins = [
+    "https://your-frontend.onrender.com",
+]
 
-# Allow frontend to access backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # restrict in production
+    allow_origins=["*"],   
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Root route
 @app.get("/")
 def home():
     return {"message": "Profile API is running"}
 
-# Get all profiles
 @app.get("/profiles")
 def get_profiles():
     return profiles
 
-# Get profile by ID
 @app.get("/profiles/{profile_id}")
 def get_profile(profile_id: int):
     for profile in profiles:
